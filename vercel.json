@@ -23,7 +23,7 @@
   ],
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/(?!_/backend)(.*)",
       "destination": "/index.html"
     }
   ],
@@ -42,6 +42,10 @@
         {
           "key": "X-XSS-Protection",
           "value": "1; mode=block"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
         }
       ]
     }
