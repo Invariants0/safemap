@@ -14,11 +14,14 @@ from collections import Counter
 import os
 import json
 
+print(f"DEBUG: Frontend URL setting: {settings.frontend_url}")
+print(f"DEBUG: Database URL: {settings.database_url[:50] if settings.database_url else 'None'}...")
+
 app = FastAPI(title="SafeMap API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.frontend_url, "http://localhost:5173"],
+    allow_origins=[settings.frontend_url, "http://localhost:5173", "https://safemap-evorozon.vercel.app"],
     allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
