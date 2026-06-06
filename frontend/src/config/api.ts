@@ -7,14 +7,8 @@ const getAPIURL = (): string => {
     return import.meta.env.VITE_API_URL || 'http://localhost:8000';
   }
 
-  // Production: use Vercel URL automatically
-  const vercelUrl = import.meta.env.VITE_VERCEL_URL;
-  if (vercelUrl) {
-    return `https://${vercelUrl}/_/backend`;
-  }
-
-  // Fallback (shouldn't happen in production)
-  return 'http://localhost:8000';
+  // Production: use Render backend
+  return 'https://safemap-3wfm.onrender.com';
 };
 
 const API_URL = getAPIURL();
