@@ -12,10 +12,17 @@ services:
         # Set this in Render dashboard under Environment variables
       - key: DATABASE_URL
         scope: run
-        # Optional: Use PostgreSQL on Render instead of SQLite for production
+        fromDatabase:
+          name: safemap-db
+          property: connectionString
       - key: FRONTEND_URL
         scope: run
         value: https://safemap-evorozon.vercel.app
       - key: USE_DUMMY_DATA
         scope: run
         value: "false"
+
+  - type: pgsql
+    name: safemap-db
+    version: 15
+    plan: free
