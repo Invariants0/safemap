@@ -28,7 +28,11 @@ app.add_middleware(
 
 @app.on_event("startup")
 def startup_event():
-    init_db()
+    try:
+        init_db()
+    except Exception as e:
+        print(f"Warning: Database initialization failed on startup: {e}")
+        print("Database will be initialized on first request.")
 
 
 @app.get("/health")
