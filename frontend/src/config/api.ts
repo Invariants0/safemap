@@ -7,8 +7,8 @@ const getAPIURL = (): string => {
     return import.meta.env.VITE_API_URL || 'http://localhost:8000';
   }
 
-  // Production: use Render backend
-  return 'https://safemap-3wfm.onrender.com';
+  // Production: use environment variable or Render backend
+  return import.meta.env.VITE_API_URL || 'https://safemap-3wfm.onrender.com';
 };
 
 const API_URL = getAPIURL();
